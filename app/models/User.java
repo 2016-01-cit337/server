@@ -43,7 +43,7 @@ public class User extends Model {
                 .findUnique();
     }
 
-    public static String getSha512(String input) {
+    public static String getSha256(String input) {
         MessageDigest mDigest = null;
         try {
             mDigest = MessageDigest.getInstance("SHA-256");
