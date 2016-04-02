@@ -80,6 +80,7 @@ public class UserController extends Controller {
 
     private Result createUser() {
         User user = play.libs.Json.fromJson(request().body().asJson(), User.class);
+        user.setPassword(User.getSha256(user.getPassword()));
         Ebean.save(user);
         return created(play.libs.Json.toJson(user));
     }
