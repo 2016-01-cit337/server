@@ -2,14 +2,13 @@ package models;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import play.data.validation.Constraints;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Entity
 public class User extends Model {
@@ -34,6 +33,14 @@ public class User extends Model {
     private String confirmPassword;
 
     private String token;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Board> boards;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Post> posts;
 
 
     public static User findByEmail(String email) {
