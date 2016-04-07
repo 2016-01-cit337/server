@@ -19,17 +19,51 @@ public class Board extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Constraints.Required
     @Constraints.MinLength(2)
     private String title;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
-    private User owner;
+    @JsonBackReference("user-board")
+    private User user;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "board", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Post> replies;
+    @JsonManagedReference("board-post")
+    private List<Post> posts;
 
+    @Constraints.Required
     @Constraints.MinLength(10)
     private String content;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

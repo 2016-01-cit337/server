@@ -8,16 +8,21 @@ import play.mvc.Security;
 
 public class ActionAuthenticator extends Security.Authenticator {
 
-    @Override
-    public String getUsername(Http.Context ctx) {
+    public static User getUser(Http.Context ctx){
         String token = getTokenFromHeader(ctx);
         if (token != null) {
             User user = Ebean.find(User.class).where().eq("token", token).findUnique();
             if (user != null) {
-                return user.getEmail();
+                return user;
             }
         }
         return null;
+    }
+
+    @Override
+    public String getUsername(Http.Context ctx) {
+        User user = getUser(ctx);
+        return user != null ? user.getEmail() : null;
     }
 
     @Override
@@ -25,7 +30,7 @@ public class ActionAuthenticator extends Security.Authenticator {
         return super.onUnauthorized(context);
     }
 
-    private String getTokenFromHeader(Http.Context ctx) {
+    private static String getTokenFromHeader(Http.Context ctx) {
         String[] authTokenHeaderValues = ctx.request().headers().get("X-AUTH-TOKEN");
         if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
             return authTokenHeaderValues[0];

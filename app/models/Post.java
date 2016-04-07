@@ -17,12 +17,12 @@ public class Post extends Model {
    private long id;
 
    @ManyToOne(fetch = FetchType.EAGER)
-   @JsonBackReference
+   @JsonBackReference("board-post")
    private Board board;
 
    @ManyToOne(fetch = FetchType.EAGER)
-   @JsonBackReference
-   private User owner;
+   @JsonBackReference("user-post")
+   private User user;
 
    @Constraints.MinLength(10)
    private String content;
