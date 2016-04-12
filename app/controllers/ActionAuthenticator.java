@@ -11,7 +11,7 @@ public class ActionAuthenticator extends Security.Authenticator {
     private static User getUser(Http.Context ctx){
         String token = getTokenFromHeader(ctx);
         if (token != null) {
-            User user = Ebean.find(User.class).where().eq("token", token).findUnique();
+            User user = Ebean.find(User.class).where().ne("token", null).eq("token", token).findUnique();
             if (user != null) {
                 ctx.session().put("User", user.getId().toString());
                 return user;

@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.List;
 
-public class UserController extends Controller {
+public class UserController extends ControllerBase {
 
     @javax.inject.Inject
     FormFactory formFactory;
@@ -149,10 +149,10 @@ public class UserController extends Controller {
     }
 
     @Security.Authenticated(ActionAuthenticator.class)
-    public Result logout(long id) {
-        User user = Ebean.find(User.class, id);
+    public Result logout() {
+        User user = getAuthenicatedUser();
         if (user != null) {
-            user.setToken(generateAuthToken());
+            user.setToken(null);
             Ebean.save(user);
             return ok();
         }
