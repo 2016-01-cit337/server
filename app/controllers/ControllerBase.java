@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import models.User;
 import play.mvc.Controller;
 
@@ -9,7 +10,7 @@ import play.mvc.Controller;
 public class ControllerBase extends Controller {
 
     public User getAuthenicatedUser(){
-        return ActionAuthenticator.getUser(ctx());
+        return Ebean.find(User.class, Long.parseLong(session().get("User")));
     }
 
 }

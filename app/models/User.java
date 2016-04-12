@@ -2,6 +2,7 @@ package models;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import play.data.validation.Constraints;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class User extends Model {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Constraints.Required
@@ -30,7 +31,10 @@ public class User extends Model {
     private String password;
 
     @Transient
+    @JsonIgnore
     private String confirmPassword;
+
+    private long createdDate;
 
     private String token;
 
@@ -119,5 +123,13 @@ public class User extends Model {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(long createdDate) {
+        this.createdDate = createdDate;
     }
 }

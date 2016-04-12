@@ -4,20 +4,24 @@
 # --- !Ups
 
 create table board (
-  id                            bigint auto_increment not null,
+  id                            bigint not null,
   title                         varchar(255),
   user_id                       bigint,
   content                       varchar(255),
+  created_date                  bigint,
   constraint pk_board primary key (id)
 );
+create sequence board_seq;
 
 create table post (
-  id                            bigint auto_increment not null,
+  id                            bigint not null,
   board_id                      bigint,
   user_id                       bigint,
   content                       varchar(255),
+  created_date                  bigint,
   constraint pk_post primary key (id)
 );
+create sequence post_seq;
 
 create table user (
   id                            bigint not null,
@@ -25,6 +29,7 @@ create table user (
   last_name                     varchar(255),
   email                         varchar(255),
   password                      varchar(255),
+  created_date                  bigint,
   token                         varchar(255),
   constraint pk_user primary key (id)
 );
@@ -52,8 +57,10 @@ alter table post drop constraint if exists fk_post_user_id;
 drop index if exists ix_post_user_id;
 
 drop table if exists board;
+drop sequence if exists board_seq;
 
 drop table if exists post;
+drop sequence if exists post_seq;
 
 drop table if exists user;
 drop sequence if exists user_seq;

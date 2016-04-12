@@ -10,6 +10,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 
 import java.security.SecureRandom;
+import java.time.Instant;
 import java.util.List;
 
 public class UserController extends Controller {
@@ -81,6 +82,7 @@ public class UserController extends Controller {
     private Result createUser() {
         User user = play.libs.Json.fromJson(request().body().asJson(), User.class);
         user.setPassword(User.getSha256(user.getPassword()));
+        user.setCreatedDate(Instant.now().getEpochSecond());
         Ebean.save(user);
         return created(play.libs.Json.toJson(user));
     }

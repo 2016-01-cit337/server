@@ -1,5 +1,6 @@
 package models;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -16,7 +17,7 @@ import java.util.List;
 public class Board extends Model {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @Constraints.Required
@@ -32,8 +33,14 @@ public class Board extends Model {
     private List<Post> posts;
 
     @Constraints.Required
-    @Constraints.MinLength(10)
+    @Constraints.MinLength(2)
     private String content;
+
+    private long createdDate;
+
+    public static Board findById(long id){
+        return Ebean.find(Board.class, id);
+    }
 
     public String getTitle() {
         return title;
@@ -65,5 +72,13 @@ public class Board extends Model {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(long createdDate) {
+        this.createdDate = createdDate;
     }
 }

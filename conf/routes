@@ -17,4 +17,7 @@ POST    /api/register               controllers.UserController.register
 POST    /api/login                  controllers.UserController.authenticate
 GET     /api/logout                 controllers.UserController.logout(id:Long)
 
-POST    /api/board/create           controllers.BoardController.createBoard
+GET     /api/boards                 controllers.BoardController.getAllBoards
+POST    /api/boards/create          controllers.BoardController.createBoard
+GET     /api/boards/:id             controllers.BoardController.getBoard(id:Long)
+POST    /api/boards/:id/post        controllers.BoardController.createPost(id:Long)
