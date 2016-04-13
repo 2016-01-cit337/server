@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>models</OriginalElement>
+  <nodes>
+    <node x="372.25000000000006" y="1898.0">models.Post</node>
+    <node x="-731.3633952254643" y="740.1777188328912">models.User</node>
+    <node x="337.75000000000006" y="0.0">models.Board</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="models.User" target="models.Post">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="models.Post" target="models.User">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="models.Board" target="models.Post">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="models.Board" target="models.User">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="models.User" target="models.Board">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="models.Post" target="models.Board">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4553140096618358" x="393.0" y="1232.0" />
+  <SelectedNodes>
+    <node>models.User</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

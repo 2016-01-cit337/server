@@ -70,15 +70,15 @@ public class Board extends Model {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public long getCreatedDate() {
         return createdDate;
     }
 
     public void setCreatedDate(long createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 }

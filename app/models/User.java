@@ -73,10 +73,6 @@ public class User extends Model {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -131,5 +127,13 @@ public class User extends Model {
 
     public void setCreatedDate(long createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public List<Board> getBoards() {
+        return boards;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 }
