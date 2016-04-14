@@ -3,9 +3,9 @@
   <ID>JAVA</ID>
   <OriginalElement>models</OriginalElement>
   <nodes>
-    <node x="372.25000000000006" y="1898.0">models.Post</node>
-    <node x="-731.3633952254643" y="740.1777188328912">models.User</node>
-    <node x="337.75000000000006" y="0.0">models.Board</node>
+    <node x="-42.62499999999977" y="550.6666666666667">models.Post</node>
+    <node x="-811.3333333333333" y="72.66666666666674">models.User</node>
+    <node x="-45.45833333333337" y="76.66666666666663">models.Board</node>
   </nodes>
   <notes />
   <edges>
@@ -13,11 +13,11 @@
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="models.Post" target="models.User">
+    <edge source="models.Board" target="models.Post">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
-    <edge source="models.Board" target="models.Post">
+    <edge source="models.Post" target="models.User">
       <point x="0.0" y="0.0" />
       <point x="0.0" y="0.0" />
     </edge>
@@ -34,10 +34,8 @@
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4553140096618358" x="393.0" y="1232.0" />
-  <SelectedNodes>
-    <node>models.User</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="1.0" x="-147.0" y="483.0" />
+  <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
     <Category>Methods</Category>

@@ -24,6 +24,7 @@ public class Post extends Model {
    @JsonBackReference("user-post")
    private User user;
 
+   @Constraints.Required
    @Constraints.MinLength(10)
    private String content;
 

@@ -87,8 +87,9 @@ public class BoardController extends ControllerBase {
         Board board = Ebean.find(Board.class)
                 .where().idEq(id)
                 .select("id, title, content, createdDate")
-                .fetch("user", "id, firstName, lastName")
                 .fetch("posts")
+                .fetch("posts.user", "id, firstName, lastName")
+                .fetch("user", "id, firstName, lastName")
                 .findUnique();
 
         if(board == null){
@@ -133,9 +134,9 @@ public class BoardController extends ControllerBase {
         if(form.hasErrors()){
             JsonNode node = form.errorsAsJson();
 
-            Board error = new Board();
+            Post error = new Post();
             if(form.error("content") != null){
-                error.setTitle(node.get("content").get(0).asText());
+                error.setContent(node.get("content").get(0).asText());
             }
             return play.libs.Json.toJson(error);
         }
